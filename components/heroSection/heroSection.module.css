@@ -1,4 +1,4 @@
-.mainImg{
+.mainImg {
     width: 100% !important;
     height: 550px;
     object-fit: cover;
@@ -25,11 +25,11 @@
 
 
 @media all and (max-width: 720px) {
-    html {
+    /* html {
         font-size: 8px;
-    }
+    } */
 
-    .mainImg{
+    .mainImg {
         height: 520px !important;
     }
 
@@ -49,11 +49,11 @@
 }
 
 @media all and (max-width: 480px) {
-    html {
+    /* html {
         font-size: 5px;
-    }
+    } */
 
-    .mainImg{
+    .mainImg {
         height: 480px !important;
     }
 
