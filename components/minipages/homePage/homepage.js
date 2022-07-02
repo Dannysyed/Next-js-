@@ -15,18 +15,22 @@ let Homepage = () => {
         colorTheme="#ff0000"
         textColor="#ffffff"
         cards={[1, 2, 3]}
+        href={'/section'}
       />
       <BlogRows
         sectionName="Explore new topics"
         colorTheme="#ffd700"
         textColor="#000000"
         cards={[1, 2, 3]}
+        href={'/section'}
+
       />
       <BlogRows
         sectionName="Must read section"
         colorTheme="#00ff7f"
         textColor="#000000"
         cards={[1, 2, 3]}
+        href={'/section'}
       />
     </div>
   );

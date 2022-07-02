@@ -6,8 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
 import BookIcon from "@mui/icons-material/Book";
 import FaceIcon from "@mui/icons-material/Face";
-
-function BlogRows({ sectionName, colorTheme, textColor, cards }) {
+import Link from 'next/link'
+function BlogRows({ sectionName, colorTheme, textColor, cards, href }) {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>{sectionName}</h2>
@@ -47,6 +47,7 @@ function BlogRows({ sectionName, colorTheme, textColor, cards }) {
                 <span className={styles.blogViews} style={{ color: textColor }}>
                   1023 <FaceIcon className={styles.blogViewsIcon} />
                 </span>
+                <Link href={href}>goto</Link>
               </div>
             </CardContent>
           </Card>

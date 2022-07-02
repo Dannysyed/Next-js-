@@ -19,9 +19,10 @@ function SectionPage({ title, subtitle }) {
         colorTheme="#ffd3b6"
         textColor="#000000"
         cards={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+        href={'/blog'}
 
       />
-      <Link href={"/blog"}>Productivity</Link>
+      {/* <Link href={"/blog"}>Productivity</Link> */}
     </main>
   );
 }
