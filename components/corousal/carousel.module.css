@@ -1,0 +1,10 @@
+.car {
+    /* border: solid; */
+    /* width: 152rem !important; */
+    /* height: 100px; */
+    /* margin-right: 20rem; */
+    object-fit: contain;
+    /* top: 0px; */
+    margin: 0 auto;
+    margin-bottom: 20rem;
+}

@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
 import CreateIcon from "@mui/icons-material/Create";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
@@ -7,8 +7,19 @@ import MyDrawer from "../drawer/MyDrawer";
 
 // import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import Link from 'next/link'
+import useDeviceSize from "../../hooks/useWindowDimensions";
 function Navbar() {
-  const { width, height } = useWindowDimensions();
+  // const [_document, set_document] = React.useState(null)
+
+  // React.useEffect(() => {
+  //   set_document(document)
+  // }, [])
+  const [width] = useDeviceSize()
+  console.log(width)
+
+  // const vw = Math.max(_document.documentElement.clientWidth || 0, window.innerWidth || 0)
+
+
 
 
 
@@ -24,24 +35,24 @@ function Navbar() {
       <div className={styles.navLinks}>
         <ul>
           <li>
-            <Link href={"/section/technology"}>Technology</Link>
+            <Link href={"/section"}>Technology</Link>
           </li>
           <li>
-            <Link href={"/section/anime"}>Anime</Link>
+            <Link href={"/section"}>Anime</Link>
           </li>
           <li>
-            <Link href={"/section/controversy"}>Controversy</Link>
+            <Link href={"/section"}>Controversy</Link>
           </li>
           <li>
-            <Link href={"/section/celebs"}>Celebs</Link>
+            <Link href={"/section"}>Celebs</Link>
           </li>
           <li>
-            <Link href={"/section/productivity"}>Productivity</Link>
+            <Link href={"/section/section"}>Productivity</Link>
           </li>
         </ul>
       </div>
       <div className={styles.others}>
-        {width > 1200 ? (
+        {width > 1300 ? (
           <Button
             endIcon={<CreateIcon />}
             variant="contained"

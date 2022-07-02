@@ -1,12 +1,15 @@
-import HeroSection from "../heroSection/HeroSection";
+import HeroSection from "../../heroSection/HeroSection";
 import styles from "./homePage.module.css";
-import myImage from "../../Assets/heroPage/zenitsu.jpg";
-import BlogRows from "../blogRows/BlogRows";
+// import myImage from "../../Assets/heroPage/zenitsu.jpg";
+import BlogRows from "../../blogRows/BlogRows";
+import Example from "../../corousal/corousal";
+import Corousal from "../../corousal/corousal";
 
 let Homepage = () => {
   return (
     <div className={styles.home}>
-      <HeroSection imgSrc={myImage} />
+      {/* <HeroSection imgSrc={myImage} /> */}
+      <Corousal></Corousal>
       <BlogRows
         sectionName="Trending today"
         colorTheme="#ff0000"
