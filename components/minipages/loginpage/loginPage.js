@@ -12,13 +12,13 @@ const LoginPage = () => {
                     </div>
                     <FormControl>
                         <TextField
-                            style={{ marginBottom: 40, width: 300, backgroundColor: '#20DF7F' }}
+                            style={{ marginBottom: 40, width: 300, backgroundColor: '#a3ddc0' }}
                             onChange={(e) => setUserName(e.target.value)}
                             sx={{ margin: 2 }} id="outlined-basic" label="Login" variant="outlined" />
                         <TextField
-                            style={{ marginBottom: 40, width: 300, backgroundColor: '#20DF7F' }}
+                            style={{ marginBottom: 40, width: 300, backgroundColor: '#a3ddc0' }}
                             onChange={(e) => setPassword(e.target.value)}
-                            sx={{ margin: 2 }} id="outlined-basic" label="Password" variant="filled" />
+                            sx={{ margin: 2 }} id="outlined-basic" label="Password" variant="outlined" />
                         <Button style={{ backgroundColor: '#224957', color: '#FBFAF5', textTransform: 'none', borderRadius: '5px', width: '30rem', marginLeft: '15px', padding: 10 }} variant="contained">Sign in</Button>
 
                     </FormControl>
