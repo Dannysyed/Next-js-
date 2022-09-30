@@ -22,26 +22,7 @@ const LoginPage = (req) => {
     const notify = (text) => toast.success(text, {
         position: 'bottom-center'
     });
-    // let SubmitHandle = () => {
-    //     let json_data = {}
-    //     json_data.email = email
-    //     json_data.password = password
-    //     json_data.name = "demo"
-    //     let data = JSON.stringify(json_data);
-    //     console.log(data)
 
-    //     axios.post(BaseUrl + 'users', data, {
-    //         headers: {
-    //             // Overwrite Axios's automatically set Content-Type
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(res => {
-    //         console.log(res)
-    //         notify(res.data.message)
-    //     })
-
-
-    // }
     let SubmitHandle = () => {
         setloading(true)
         let json_data = {}
@@ -60,6 +41,7 @@ const LoginPage = (req) => {
             setloading(false)
             if (res.data.token) {
                 setTokenData(res.data.token)
+                con.token_rec(res.data.token)
                 setTimeout(() => {
 
                     router.push('/admin')

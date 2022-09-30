@@ -29,8 +29,7 @@ function BlogRows({ sectionName, colorTheme, textColor, cards, href }) {
               className={styles.cardContent}
             >
               <p className={styles.blogTitle} style={{ color: textColor }}>
-                SpaceX president backs Elon Musk over sex misconduct claims: ‘I
-                believe the allegations to be false’
+                {item?.Post?.title}
               </p>
               <div className={styles.blogDetail}>
                 <Chip

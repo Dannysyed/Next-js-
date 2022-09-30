@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 const Adminpage = (req) => {
     let route = useRouter()
     let con = useContext(Data_context)
+    let token_data = con.token
     console.log(con.islogged)
     useEffect(
         () => {
@@ -31,7 +32,7 @@ const Adminpage = (req) => {
 
     let [title, setTitle] = useState('')
     let [content, setContent] = useState('')
-    let token_data
+    // let token_data
     const notify = (text) => toast.success(text, {
         position: 'bottom-center'
     });
@@ -46,7 +47,7 @@ const Adminpage = (req) => {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjE5LCJleHAiOjE2NjM5NTYwOTl9.5GXyfwNnIzcYBPDGexamVpADVV6NQM_taB18SsFcY5s`
+                'Authorization': `Bearer ${token_data}`
             }
         }).then(res => {
             console.log(res)

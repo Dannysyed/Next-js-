@@ -1,26 +1,18 @@
 import React, { useReducer, useState } from 'react'
 import Data_context from './context'
-let defaul_state = {
-    logged: false
-}
-let loginreducer = (state, action) => {
-    if (action.type == "LoggedIn") {
-        state.logged = true
-    }
-    if (action.type == "LoggedOut") {
-        state.logged = false
-    }
-}
 const Routecontext = (props) => {
-
-    // let [loginstate, logindispatch] = useReducer(loginreducer, defaul_state)
     let [loginstate, setlogin] = useState(false)
+    let [tokenData, setTokenData] = useState('')
+
     let login = (data) => {
         // logindispatch({ type: "LoggedIn" })
         setlogin(true)
     }
+    let token_rec = (data) => {
+        setTokenData(data)
+    }
     return (
-        <Data_context.Provider value={{ islogged: loginstate, login: login }}>
+        <Data_context.Provider value={{ islogged: loginstate, login: login, token: tokenData, token_rec: token_rec }}>
             {props.children}
         </Data_context.Provider>
 

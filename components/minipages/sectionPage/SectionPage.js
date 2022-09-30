@@ -3,7 +3,8 @@ import styles from "./sectionPage.module.css";
 import BlogRows from "../../blogRows/BlogRows";
 import imgSrc from '../../../public/port.jpg'
 import Link from 'next/link'
-function SectionPage({ title, subtitle }) {
+function SectionPage({ title, subtitle, data }) {
+  console.log(data, 'ss')
 
   return (
     <main>
@@ -18,7 +19,7 @@ function SectionPage({ title, subtitle }) {
         sectionName="All glamour here"
         colorTheme="#ffd3b6"
         textColor="#000000"
-        cards={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+        cards={data.users}
         href={'/blog'}
 
       />
