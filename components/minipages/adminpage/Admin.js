@@ -1,17 +1,63 @@
 import { Button, Card, FormControl, InputLabel, TextField } from '@mui/material'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './admin.module.css'
 // import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 // import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import axios from 'axios'
+import BaseUrl from '../../../utils/config'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router'
+import { CircularProgress } from '@mui/material'
+import Data_context from '../../../store/context';
+import { NextResponse } from 'next/dist/server/web/spec-extension/response'
+import { useEffect } from 'react';
 
-const Adminpage = () => {
-    const [age, setAge] = React.useState('');
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+const Adminpage = (req) => {
+    let route = useRouter()
+    let con = useContext(Data_context)
+    console.log(con.islogged)
+    useEffect(
+        () => {
+            if (con.islogged === false) {
+                NextResponse.redirect('http://localhost:3000/login')
+                route.push('/login')
+            }
+        }
+        , [])
+
+    let [title, setTitle] = useState('')
+    let [content, setContent] = useState('')
+    let token_data
+    const notify = (text) => toast.success(text, {
+        position: 'bottom-center'
+    });
+    let handleSubmit = () => {
+        let json_data = {}
+        json_data.title = title
+        json_data.content = content
+        let data = JSON.stringify(json_data);
+        console.log(data)
+
+        axios.post(BaseUrl + 'posts', data, {
+            headers: {
+                // Overwrite Axios's automatically set Content-Type
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjE5LCJleHAiOjE2NjM5NTYwOTl9.5GXyfwNnIzcYBPDGexamVpADVV6NQM_taB18SsFcY5s`
+            }
+        }).then(res => {
+            console.log(res)
+            notify(res.data.message)
+        })
+    }
+    // const [age, setAge] = React.useState('');
+
+    // const handleChange = (event) => {
+    //     setAge(event.target.value);
+    // };
     return (
         <Card elevation={6} className={styles.form}>
 
@@ -20,14 +66,15 @@ const Adminpage = () => {
 
                 <TextField
                     style={{ marginBottom: 20, width: 300, backgroundColor: '#EBF5F8' }}
+                    onChange={(e) => setTitle(e.target.value)}
 
                     sx={{ margin: 2 }} fullWidth label="TITLE" id="fullWidth" />
                 <TextField
                     style={{ marginBottom: 20, width: 300, backgroundColor: '#EBF5F8', }}
-                    onChange={(e) => setPassword(e.target.value)}
-                    sx={{ margin: 2 }} fullWidth label="Description" id="fullWidth" />
-                <InputLabel id="demo-select-small">Age</InputLabel>
-                <Select
+                    onChange={(e) => setContent(e.target.value)}
+                    sx={{ margin: 2 }} fullWidth label="Content" id="fullWidth" />
+                <InputLabel id="demo-select-small">Posts</InputLabel>
+                {/* <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
                     value={age}
@@ -40,9 +87,9 @@ const Adminpage = () => {
                     <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
                     <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-                <input type={"file"} style={{ padding: '20px' }}></input>
-                <Button style={{ backgroundColor: 'black', color: 'white', textTransform: 'none', borderRadius: '10px', width: '16rem', marginLeft: '30px' }} variant="contained" onClick={null}>Submit</Button>
+                </Select> */}
+                {/* <input type={"file"} style={{ padding: '20px' }}></input> */}
+                <Button style={{ backgroundColor: 'black', color: 'white', textTransform: 'none', borderRadius: '10px', width: '16rem', marginLeft: '30px' }} variant="contained" onClick={handleSubmit}>Submit</Button>
             </FormControl>
 
 

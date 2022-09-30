@@ -1,9 +1,13 @@
 import React from 'react'
 import LoginPage from '../../components/minipages/loginpage/loginPage'
-
-const login = () => {
+import { NextResponse } from 'next/server'
+import { useRouter } from 'next/router'
+const login = (req) => {
+    let router = useRouter()
+    let url = router.pathname
     return (
-        <LoginPage></LoginPage>
+
+        <LoginPage url={url}></LoginPage>
     )
 }
 
