@@ -7,23 +7,27 @@ import Chip from "@mui/material/Chip";
 import BookIcon from "@mui/icons-material/Book";
 import FaceIcon from "@mui/icons-material/Face";
 import Link from 'next/link'
-function BlogRows({ sectionName, colorTheme, textColor, cards, href }) {
+function BlogRows({ sectionName, colorTheme, textColor, cards, href, url }) {
+  console.log(url, 'asdfas}}}}}}', cards)
+  let filter = cards.filter(val => val.Post?.category == url)
+  console.log(filter)
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>{sectionName}</h2>
       <div className={styles.blogsContainer}>
-        {cards.map((item) => (
+        {filter?.map((item) => (
           <Card
             className={styles.blogCard}
             sx={{ maxWidth: 345, borderColor: colorTheme }}
             elevation="0"
           >
-            <CardMedia
+            {/* <CardMedia
               component="img"
               height="200"
               image="https://ichef.bbci.co.uk/news/976/cpsprodpb/15E47/production/_124717698_gettyimages-1395200655.jpg"
               alt="green iguana"
-            />
+            /> */}
+            <iframe src="https://giphy.com/embed/kN79e1NI1QErC" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
             <CardContent
               style={{ backgroundColor: colorTheme }}
               className={styles.cardContent}
@@ -41,12 +45,12 @@ function BlogRows({ sectionName, colorTheme, textColor, cards, href }) {
                       style={{ color: textColor }}
                     />
                   }
-                  label="Technology"
+                  label={item?.Post?.category}
                 />
                 <span className={styles.blogViews} style={{ color: textColor }}>
                   1023 <FaceIcon className={styles.blogViewsIcon} />
                 </span>
-                <Link href={href}>goto</Link>
+                <Link href={`${href}/${item?.Post?.id}`} >goto</Link>
               </div>
             </CardContent>
           </Card>

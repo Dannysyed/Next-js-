@@ -3,13 +3,13 @@ import styles from "./sectionPage.module.css";
 import BlogRows from "../../blogRows/BlogRows";
 import imgSrc from '../../../public/port.jpg'
 import Link from 'next/link'
-function SectionPage({ title, subtitle, data }) {
+function SectionPage({ title, subtitle, data, url }) {
   console.log(data, 'ss')
 
   return (
     <main>
       <div className={styles.header}>
-        <img src={'/images/dc.jpg'} alt="section here" />
+        <img src={`/images/${url}.jpg`} alt="section here" />
       </div>
       <div className={styles.headerText}>
         <h2>{title}</h2>
@@ -21,6 +21,7 @@ function SectionPage({ title, subtitle, data }) {
         textColor="#000000"
         cards={data.users}
         href={'/blog'}
+        url={url}
 
       />
       {/* <Link href={"/blog"}>Productivity</Link> */}

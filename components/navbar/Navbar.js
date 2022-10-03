@@ -35,19 +35,19 @@ function Navbar() {
       <div className={styles.navLinks}>
         <ul>
           <li>
-            <Link href={"/section"}>Technology</Link>
+            <Link href={"/section/TECHNOLOGY"}>Technology</Link>
           </li>
           <li>
-            <Link href={"/section"}>Anime</Link>
+            <Link href={"/section/ANIME"}>Anime</Link>
           </li>
           <li>
-            <Link href={"/section"}>Controversy</Link>
+            <Link href={"/section/GAMES"}>Games</Link>
           </li>
           <li>
-            <Link href={"/section"}>Celebs</Link>
+            <Link href={"/section/CELEB"}>Celebs</Link>
           </li>
           <li>
-            <Link href={"/section/section"}>Productivity</Link>
+            <Link href={"/section/SPORTS"}>Sports</Link>
           </li>
         </ul>
       </div>

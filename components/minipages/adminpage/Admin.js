@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 
 
 const Adminpage = (req) => {
+
     let route = useRouter()
     let con = useContext(Data_context)
     let token_data = con.token
@@ -32,6 +33,7 @@ const Adminpage = (req) => {
 
     let [title, setTitle] = useState('')
     let [content, setContent] = useState('')
+    let [category, setCategory] = useState('')
     // let token_data
     const notify = (text) => toast.success(text, {
         position: 'bottom-center'
@@ -40,6 +42,7 @@ const Adminpage = (req) => {
         let json_data = {}
         json_data.title = title
         json_data.content = content
+        json_data.category = category
         let data = JSON.stringify(json_data);
         console.log(data)
 
@@ -59,6 +62,9 @@ const Adminpage = (req) => {
     // const handleChange = (event) => {
     //     setAge(event.target.value);
     // };
+    let handlecategory = (e) => {
+        setCategory(e.target.value)
+    }
     return (
         <Card elevation={6} className={styles.form}>
 
@@ -75,20 +81,20 @@ const Adminpage = (req) => {
                     onChange={(e) => setContent(e.target.value)}
                     sx={{ margin: 2 }} fullWidth label="Content" id="fullWidth" />
                 <InputLabel id="demo-select-small">Posts</InputLabel>
-                {/* <Select
+                <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
-                    value={age}
+                    value={category}
                     label="Age"
-                    onChange={handleChange}
+                    onChange={handlecategory}
                 >
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select> */}
+                    <MenuItem value={"TECHNOLOGY"}>Technology</MenuItem>
+                    <MenuItem value={"GAMES"}>Games</MenuItem>
+                    <MenuItem value={"ANIME"}>Anime</MenuItem>
+                </Select>
                 {/* <input type={"file"} style={{ padding: '20px' }}></input> */}
                 <Button style={{ backgroundColor: 'black', color: 'white', textTransform: 'none', borderRadius: '10px', width: '16rem', marginLeft: '30px' }} variant="contained" onClick={handleSubmit}>Submit</Button>
             </FormControl>
